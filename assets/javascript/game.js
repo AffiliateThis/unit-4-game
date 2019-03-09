@@ -5,27 +5,36 @@ var userScore = 0;
 // When the site loads, a random number will need to be displayed to the player that is between 19 - 120
 
 $(document).ready(function() {
-  var randomUserNum = Math.floor(Math.random() * 101) + 20;
-  $("#randomusernum").text(randomUserNum);
-  console.log(randomUserNum);
+  var button1;
+  var button2;
+  var button3;
+  var button4;
+  var randomUserNum;
+  var userScore = 0;
 
-  var button1 = Math.floor(Math.random() * 12) + 1;
-  console.log(button1);
+  function gameStart() {
+    randomUserNum = Math.floor(Math.random() * 101) + 20;
+    $("#randomusernum").text(randomUserNum);
+    $("#userscore").text(userScore);
+    console.log(randomUserNum);
 
-  var button2 = Math.floor(Math.random() * 12) + 1;
-  console.log(button2);
+    button1 = Math.floor(Math.random() * 12) + 1;
+    console.log(button1);
 
-  var button3 = Math.floor(Math.random() * 12) + 1;
-  console.log(button3);
+    button2 = Math.floor(Math.random() * 12) + 1;
+    console.log(button2);
 
-  var button4 = Math.floor(Math.random() * 12) + 1;
-  console.log(button4);
+    button3 = Math.floor(Math.random() * 12) + 1;
+    console.log(button3);
 
+    button4 = Math.floor(Math.random() * 12) + 1;
+    console.log(button4);
+  }
   // $(userScore).math(button1 + button2);
 
   $("#button1").click(function() {
     userScore = userScore + button1;
-    $("#userScore").text(userScore);
+    $("#userscore").text(userScore);
     console.log(userScore);
     console.log(randomUserNum);
     // add the click event value here per click event
@@ -33,6 +42,7 @@ $(document).ready(function() {
 
   $("#button2").click(function() {
     userScore = userScore + button2;
+    $("#userscore").text(userScore);
     console.log(userScore);
     console.log(randomUserNum);
     checkWinlose();
@@ -40,6 +50,7 @@ $(document).ready(function() {
 
   $("#button3").click(function() {
     userScore = userScore + button3;
+    $("#userscore").text(userScore);
     console.log(userScore);
     console.log(randomUserNum);
     checkWinlose();
@@ -47,6 +58,7 @@ $(document).ready(function() {
 
   $("#button4").click(function() {
     userScore = userScore + button4;
+    $("#userscore").text(userScore);
     console.log(userScore);
     console.log(randomUserNum);
     checkWinlose();
@@ -55,8 +67,11 @@ $(document).ready(function() {
   function checkWinlose() {
     if (userScore === randomUserNum) {
       alert("You win!");
+      gameStart();
     } else if (userScore > randomUserNum) {
       alert("You lose Loser!");
+      gameStart();
     }
   }
+  gameStart();
 });
